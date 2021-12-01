@@ -1,1 +1,7 @@
 import React from 'react';
+
+export default class CalendarForm extends React.Component {
+    render() {
+        return null;
+    };
+};
