@@ -22,6 +22,6 @@ export const formFields = [
     {
         name: 'time',
         label: 'what time?',
-        type: 'text'
+        type: 'time'
     }
 ]

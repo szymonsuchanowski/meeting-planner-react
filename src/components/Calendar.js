@@ -18,7 +18,7 @@ export default class Calendar extends React.Component {
         return (
             <main className='calendar'>
                 <header className='calendar__header'>
-                    <h1 className='calendar__name'>Calendar</h1>
+                    <h1 className='calendar__title'>meeting planner</h1>
                     <p className='calendar__description'>never be late</p>
                 </header>
                 <article className='calendar__wrapper'>
