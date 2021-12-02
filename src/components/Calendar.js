@@ -2,6 +2,7 @@ import React from 'react';
 import CalendarAPI from '../helpers/CalendarAPI';
 import CalendarForm from './CalendarForm';
 import CalendarList from './CalendarList';
+import {formFields as fields} from '../helpers/formFields';
 
 export default class Calendar extends React.Component {
     constructor() {
@@ -21,7 +22,7 @@ export default class Calendar extends React.Component {
                     <p className='calendar__description'>never be late</p>
                 </header>
                 <article className='calendar__wrapper'>
-                    <CalendarForm />
+                    <CalendarForm fields={fields}/>
                     <CalendarList />
                 </article>
             </main>
