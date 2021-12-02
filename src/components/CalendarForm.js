@@ -11,8 +11,6 @@ export default class CalendarForm extends React.Component {
     };
 
     inputChange = e => {
-        console.log(e.target.name);
-        console.log(e.target.value);
         const { name, value } = e.target;
         this.setState({
             [name]: value,
@@ -21,10 +19,18 @@ export default class CalendarForm extends React.Component {
 
     submitHandler = e => {
         e.preventDefault();
-        const { name, lastName, email, date, time } = this.state;
-        console.log(name, lastName, email, date, time);
-        console.log('data: ' + date);
+        const meetingData = this.createMeetingData();
     };
+
+    createMeetingData() {
+        return {
+            name: this.state.name,
+            lastName: this.state.lastName,
+            email: this.state.email,
+            date: this.state.date,
+            time: this.state.time,
+        }
+    }
 
     renderFormInputs() {
         const { fields } = this.props;
