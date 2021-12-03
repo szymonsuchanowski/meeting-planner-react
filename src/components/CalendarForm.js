@@ -19,17 +19,25 @@ export default class CalendarForm extends React.Component {
 
     submitHandler = e => {
         e.preventDefault();
-        const meetingData = this.createMeetingData();
+        const inputValuesList = this.getInputValues();
+        const meetingData = this.convertArrToObj(inputValuesList);
+        console.log(meetingData);
     };
 
-    createMeetingData() {
-        return {
-            name: this.state.name,
-            lastName: this.state.lastName,
-            email: this.state.email,
-            date: this.state.date,
-            time: this.state.time,
-        }
+    getInputValues() {
+        const inputsNames = this.getInputsNames();
+        return inputsNames.map(inputName => {
+            return { [inputName]: this.state[inputName] };
+        });
+    };
+
+    getInputsNames() {
+        const { fields } = this.props;
+        return fields.map(input => input.name);
+    };
+
+    convertArrToObj(arr) {
+        return Object.assign({}, ...arr);
     }
 
     renderFormInputs() {
