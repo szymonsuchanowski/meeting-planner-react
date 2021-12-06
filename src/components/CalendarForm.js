@@ -20,31 +20,43 @@ export default class CalendarForm extends React.Component {
 
     submitHandler = e => {
         e.preventDefault();
-        const err = this.validateData();
-        if (Object.keys(err).length !== 0) {
+        const errors = this.checkDataCorrectness();
+        if (this.isObjectEmpty(errors)) {
+            const { addMeeting } = this.props;
+            const inputValuesList = this.getInputValues();
+            const meetingData = this.convertArrToObj(inputValuesList);
+            addMeeting(meetingData);
             this.setState({
-                errors: err
-            });
+                name: '',
+                lastName: '',
+                email: '',
+                date: '',
+                time: '',
+                errors: {}
+            })
         };
-        console.log('errList:' + Object.keys(err).length);
-        const inputValuesList = this.getInputValues();
-        const meetingData = this.convertArrToObj(inputValuesList);
-        console.log(meetingData);
+        this.setState({
+            errors: errors
+        });
     };
 
-    validateData() {
-        const errors = [];
-        const dataValidator = new DataValidator();
-        const inputsNames = this.getInputsNames();
-        inputsNames.forEach(inputName => {
-            const err = dataValidator.checkData(inputName, this.state[inputName]);
+    checkDataCorrectness() {
+        const errorsArr = [];
+        this.createErrors(errorsArr);
+        const errorsObj = this.convertArrToObj(errorsArr);
+        return errorsObj;
+    }
+
+    createErrors(errorsArr) {
+        const validator = new DataValidator();
+        const inputsNamesList = this.getInputsNames();
+        inputsNamesList.forEach(inputName => {
+            const err = validator.checkDataErrors(inputName, this.state[inputName]);
             if (err) {
-                errors.push(err);
+                errorsArr.push(err);
             };
         });
-        const errObj = this.convertArrToObj(errors);
-        return errObj;
-    }
+    };
 
     getInputValues() {
         const inputsNames = this.getInputsNames();
@@ -54,7 +66,6 @@ export default class CalendarForm extends React.Component {
     };
 
     getInputsNames() {
-        console.log(this.props);
         const { fields } = this.props;
         return fields.map(input => input.name);
     };
@@ -63,46 +74,38 @@ export default class CalendarForm extends React.Component {
         return Object.assign({}, ...arr);
     };
 
+    isObjectEmpty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+
     renderFormInputs() {
         const { fields } = this.props;
         return (
-            fields.map((input, index) => {
+            fields.map(input => {
                 const { name, label, type } = input;
                 return (
-                    <>
-                        <div className='form__field' key={index}>
-                            <label className='form__label' htmlFor={name}>
-                                {label}
-                                <input
-                                    className='form__input'
-                                    id={name}
-                                    name={name}
-                                    type={type}
-                                    value={this.state[name]}
-                                    onChange={this.inputChange}
-                                />
-                                <span className='form__border'></span>
-                            </label>
+                    <div className='form__field' key={name}>
+                        <label className='form__label' htmlFor={name}>
+                            {label}
+                            <input
+                                className='form__input'
+                                id={name}
+                                name={name}
+                                type={type}
+                                value={this.state[name]}
+                                onChange={this.inputChange}
+                                min={type === 'date' ? '2021-12-06' : null}
+                            />
+                            <span className='form__border'></span>
+                        </label>
+                        <div className='form__placeholder'>
+                            {!this.isObjectEmpty(this.state.errors) && this.renderFormErrMsg(name)}
                         </div>
-                        <div className='form__err'>
-                            {Object.keys(this.state.errors).length !== 0 && this.renderFormErr(name)}
-                        </div>
-                    </>
+                    </div>
                 );
             })
         );
     };
-
-    renderFormErr(name) {
-        const err = this.state.errors[name];
-        if (err) {
-            return (
-                <p className='form__err-msg'>{err}</p>
-            );
-        } else {
-            console.log('no err');
-        }
-    }
 
     render() {
         return (
@@ -124,6 +127,11 @@ export default class CalendarForm extends React.Component {
                     </form>
                 </div>
             </section>
-        )
-    }
+        );
+    };
+
+    renderFormErrMsg(name) {
+        const errMsg = this.state.errors[name];
+        return errMsg ? (<p className='form__err'>{errMsg}</p>) : null;
+    };
 }

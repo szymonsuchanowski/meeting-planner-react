@@ -16,15 +16,15 @@ export default class DataValidator {
 
     date = {
         regExp: /^20\d{2}[-/.](0[1-9]|1[0-2])[-/.](0[1-9]|[12]\d|3[01])$/,
-        err: 'Please enter valid date (format: dd.mm.yyyy).'
+        err: 'Please enter valid date (future date & format: dd.mm.yyyy).'
     };
 
     time = {
         regExp: /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
-        err: 'Please enter valid time (format: hh:mm).'
+        err: 'Please enter valid time (future time & format: hh:mm).'
     };
 
-    checkData(inputName, inputValue) {
+    checkDataErrors(inputName, inputValue) {
         const isDataValid = this.isMatchRegex(inputName, inputValue);
         return !isDataValid ? this.createErrObject(inputName) : null;
     };
