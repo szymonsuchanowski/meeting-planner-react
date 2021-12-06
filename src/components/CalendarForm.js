@@ -76,7 +76,7 @@ export default class CalendarForm extends React.Component {
 
     isObjectEmpty(obj) {
         return Object.keys(obj).length === 0;
-    }
+    };
 
     renderFormInputs() {
         const { fields } = this.props;
@@ -94,7 +94,7 @@ export default class CalendarForm extends React.Component {
                                 type={type}
                                 value={this.state[name]}
                                 onChange={this.inputChange}
-                                min={type === 'date' ? '2021-12-06' : null}
+                                min={type === 'date' ? this.getCurrentDate() : null}
                             />
                             <span className='form__border'></span>
                         </label>
@@ -109,7 +109,7 @@ export default class CalendarForm extends React.Component {
 
     render() {
         return (
-            <section className='calendar__section-form'>
+            <section className='calendar__section calendar__section--form'>
                 <header className='calendar__subheader'>
                     <h2 className='calendar__subtitle'>schedule a meeting...</h2>
                     <p className='calendar__description'>time is money</p>
@@ -133,5 +133,9 @@ export default class CalendarForm extends React.Component {
     renderFormErrMsg(name) {
         const errMsg = this.state.errors[name];
         return errMsg ? (<p className='form__err'>{errMsg}</p>) : null;
+    };
+
+    getCurrentDate() {
+        return new Date().toISOString().slice(0, 10);
     };
 }

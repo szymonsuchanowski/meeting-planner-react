@@ -21,17 +21,27 @@ export default class DataValidator {
 
     time = {
         regExp: /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/,
-        err: 'Please enter valid time (future time & format: hh:mm).'
+        err: 'Please enter valid time (format: hh:mm).'
     };
 
     checkDataErrors(inputName, inputValue) {
         const isDataValid = this.isMatchRegex(inputName, inputValue);
-        return !isDataValid ? this.createErrObject(inputName) : null;
+        const isDateValid = inputName === 'date' ? this.isFutureDate(inputValue) : true;
+        return (!isDataValid || !isDateValid) ? this.createErrObject(inputName) : null;
     };
 
     isMatchRegex(inputName, inputValue) {
         return this[inputName].regExp.test(inputValue);
     };
+
+    isFutureDate(inputValue) {
+        const currentDate = this.getCurrentDate();
+        return new Date(inputValue) >= new Date(currentDate);
+    };
+
+    getCurrentDate() {
+        return new Date().toISOString().slice(0, 10);
+    }
 
     createErrObject(inputName) {
         return {
