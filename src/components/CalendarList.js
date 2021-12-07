@@ -1,4 +1,5 @@
 import React from 'react';
+import CalendarItem from './CalendarItem';
 
 export default class CalendarList extends React.Component {
     render() {
@@ -12,7 +13,7 @@ export default class CalendarList extends React.Component {
                     {this.renderSectionContent()}
                 </div>
             </section>
-        )
+        );
     };
 
     renderSectionContent() {
@@ -22,15 +23,15 @@ export default class CalendarList extends React.Component {
 
     isArrEmpty(arr) {
         return arr.length === 0;
-    }
+    };
 
     renderInfoMsg() {
         return (
             <p className='calendar__msg'>
                 No scheduled meetings. Do not hesitate - add first meeting and start doing!
             </p>
-        )
-    }
+        );
+    };
 
     renderMeetingsList() {
         return (
@@ -42,56 +43,6 @@ export default class CalendarList extends React.Component {
 
     renderMeetingItemsList() {
         const { meetingsList } = this.props;
-        return meetingsList.map(meeting => this.renderMeetingItem(meeting));
-    };
-
-    renderMeetingItem(meeting) {
-        const { id } = meeting;
-        return (
-            <li className='list__item'
-                key={id}>
-                {this.renderHeader(meeting)}
-                {this.renderFooter(meeting)}
-            </li>
-        );
-    };
-
-    renderHeader(meeting) {
-        const { name, lastName, email } = meeting;
-        return (
-            <header className='list__header'>
-                <h3 className='list__title'>{name} {lastName}</h3>
-                <a className='list__email'
-                    href={`mailto:${email}`}>
-                    {email}
-                </a>
-            </header>
-        );
-    };
-
-    renderFooter(meeting) {
-        const { date, time, id } = meeting;
-        return (
-            <footer className='list__footer'>
-                <div className='footer__description'>
-                    <p className='footer__paragraph'>{this.changeDateFormat(date)}</p>
-                    <p className='footer__paragraph'>{time}</p>
-                </div>
-                <button className='footer__btn'
-                    title='remove meeting'
-                    onClick={() => this.removeTask(id)}>
-                    delete
-                </button>
-            </footer>
-        );
-    };
-
-    removeTask(id) {
-        const { removeMeeting } = this.props;
-        removeMeeting(id);
-    };
-
-    changeDateFormat(date) {
-        return date.split('-').reverse().join('.');
+        return meetingsList.map(meeting => <CalendarItem data={meeting} removeMeeting={this.props.removeMeeting} key={meeting.id} />);
     };
 }
