@@ -18,7 +18,10 @@ export default class CalendarForm extends React.Component {
                         noValidate>
                         {this.renderFormInputs()}
                         <div className='form__field'>
-                            <input className='form__submit' value='Add' type='submit' />
+                            <input className='form__submit'
+                                value='Add'
+                                type='submit'
+                            />
                         </div>
                     </form>
                 </div>
@@ -47,12 +50,24 @@ export default class CalendarForm extends React.Component {
                             <span className={this.state[name].isValid ? 'form__border' : 'form__border form__border--invalid'}></span>
                         </label>
                         <div className='form__placeholder'>
-                            {!this.isObjectEmpty(this.state.errors) && this.renderFormErrMsg(name)}
+                            {this.renderFormErrMsg(name)}
                         </div>
                     </div>
                 );
             })
         );
+    };
+
+    renderFormErrMsg(name) {
+        if (!this.isObjectEmpty(this.state.errors) && this.state.errors[name]) {
+            const errMsg = this.state.errors[name];
+            return (
+                <p className='form__err'>
+                    {errMsg}
+                </p>
+            );
+        }
+        return null;
     };
 
     createStateObject() {
@@ -156,10 +171,5 @@ export default class CalendarForm extends React.Component {
     getCurrentDate() {
         const timezoneOffset = (new Date()).getTimezoneOffset() * 60000;
         return (new Date(Date.now() - timezoneOffset)).toISOString().slice(0, 10);
-    };
-
-    renderFormErrMsg(name) {
-        const errMsg = this.state.errors[name];
-        return errMsg ? (<p className='form__err'>{errMsg}</p>) : null;
     };
 }

@@ -48,7 +48,8 @@ export default class CalendarList extends React.Component {
     renderMeetingItem(meeting) {
         const { id } = meeting;
         return (
-            <li className='list__item' key={id}>
+            <li className='list__item'
+                key={id}>
                 {this.renderHeader(meeting)}
                 {this.renderFooter(meeting)}
             </li>
@@ -60,7 +61,10 @@ export default class CalendarList extends React.Component {
         return (
             <header className='list__header'>
                 <h3 className='list__title'>{name} {lastName}</h3>
-                <a className='list__email' href={`mailto:${email}`}>{email}</a>
+                <a className='list__email'
+                    href={`mailto:${email}`}>
+                    {email}
+                </a>
             </header>
         );
     };
@@ -70,7 +74,7 @@ export default class CalendarList extends React.Component {
         return (
             <footer className='list__footer'>
                 <div className='footer__description'>
-                    <p className='footer__paragraph'>{date}</p>
+                    <p className='footer__paragraph'>{this.changeDateFormat(date)}</p>
                     <p className='footer__paragraph'>{time}</p>
                 </div>
                 <button className='footer__btn'
@@ -85,5 +89,9 @@ export default class CalendarList extends React.Component {
     removeTask(id) {
         const { removeMeeting } = this.props;
         removeMeeting(id);
+    };
+
+    changeDateFormat(date) {
+        return date.split('-').reverse().join('.');
     };
 }
