@@ -40,8 +40,9 @@ export default class DataValidator {
     };
 
     getCurrentDate() {
-        return new Date().toISOString().slice(0, 10);
-    }
+        const timezoneOffset = (new Date()).getTimezoneOffset() * 60000;
+        return (new Date(Date.now() - timezoneOffset)).toISOString().slice(0, 10);
+    };
 
     createErrObject(inputName) {
         return {
