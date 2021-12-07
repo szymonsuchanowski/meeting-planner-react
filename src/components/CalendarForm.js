@@ -2,29 +2,7 @@ import React from 'react';
 import DataValidator from '../helpers/DataValidator';
 
 export default class CalendarForm extends React.Component {
-    state = {
-        name: {
-            value: '',
-            isValid: true
-        },
-        lastName: {
-            value: '',
-            isValid: true
-        },
-        email: {
-            value: '',
-            isValid: true
-        },
-        date: {
-            value: '',
-            isValid: true
-        },
-        time: {
-            value: '',
-            isValid: true
-        },
-        errors: {}
-    };
+    state = this.createStateObject();
 
     render() {
         return (
@@ -37,8 +15,7 @@ export default class CalendarForm extends React.Component {
                     <form
                         className='calendar__form form'
                         onSubmit={this.submitHandler}
-                        noValidate
-                    >
+                        noValidate>
                         {this.renderFormInputs()}
                         <div className='form__field'>
                             <input className='form__submit' value='Add' type='submit' />
@@ -78,6 +55,24 @@ export default class CalendarForm extends React.Component {
         );
     };
 
+    createStateObject() {
+        const fieldsStateDataArr = this.createStateData();
+        fieldsStateDataArr.push({ errors: {} });
+        return this.convertArrToObj(fieldsStateDataArr);
+    }
+
+    createStateData() {
+        return this.props.fields.map(input => {
+            const { name } = input;
+            return {
+                [name]: {
+                    value: '',
+                    isValid: true,
+                }
+            };
+        });
+    };
+
     submitHandler = e => {
         e.preventDefault();
         const errors = this.checkDataCorrectness();
@@ -86,39 +81,19 @@ export default class CalendarForm extends React.Component {
             const inputValuesList = this.getInputValues();
             const meetingData = this.convertArrToObj(inputValuesList);
             addMeeting(meetingData);
+            const stateObject = this.createStateObject();
+            this.setState(stateObject);
+        } else {
             this.setState({
-                name: {
-                    value: '',
-                    isValid: true
-                },
-                lastName: {
-                    value: '',
-                    isValid: true
-                },
-                email: {
-                    value: '',
-                    isValid: true
-                },
-                date: {
-                    value: '',
-                    isValid: true
-                },
-                time: {
-                    value: '',
-                    isValid: true
-                },
-                errors: {}
-            })
+                errors: errors
+            });
         };
-        this.setState({
-            errors: errors
-        });
     };
 
     inputChange = e => {
         const { name, value } = e.target;
         const newStateData = {
-            value: value.trim(),
+            value: value,
         }
         this.updateInputState(name, newStateData);
     };
@@ -155,7 +130,7 @@ export default class CalendarForm extends React.Component {
     getInputValues() {
         const inputsNames = this.getInputsNames();
         return inputsNames.map(inputName => {
-            return { [inputName]: this.state[inputName].value };
+            return { [inputName]: this.state[inputName].value.trim() };
         });
     };
 
