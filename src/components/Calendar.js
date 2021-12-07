@@ -59,7 +59,17 @@ export default class Calendar extends React.Component {
 
     loadMeetings() {
         this.api.loadData()
+            .then(data => this.sortMeetingsByTime(data))
             .then(data => (this._isMounted && this.setState({ meetings: data })))
             .catch(err => console.error(err))
+    };
+
+    sortMeetingsByTime(data) {
+        return data.sort((a, b) => {
+            if (a.date === b.date) {
+                return b.time - a.time;
+            };
+            return a.date < b.date ? -1 : 1;
+        });
     };
 }
