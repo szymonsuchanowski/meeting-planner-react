@@ -1,8 +1,10 @@
 import React from 'react';
 import DataValidator from '../helpers/DataValidator';
+import CalendarAPI from '../helpers/CalendarAPI';
 
 export default class CalendarForm extends React.Component {
     state = this.createStateObject();
+    api = new CalendarAPI();
 
     render() {
         return (
@@ -15,7 +17,8 @@ export default class CalendarForm extends React.Component {
                     <form
                         className='calendar__form form'
                         onSubmit={this.submitHandler}
-                        noValidate>
+                        noValidate
+                    >
                         {this.renderFormInputs()}
                         <div className='form__field'>
                             <input className='form__submit'
@@ -33,28 +36,107 @@ export default class CalendarForm extends React.Component {
         const { fields } = this.props;
         return (
             fields.map(input => {
-                const { name, label, type } = input;
+                const { name, label, type, filter } = input;
                 return (
-                    <div className='form__field' key={name}>
-                        <label className='form__label' htmlFor={name}>
+                    <div className='form__field'
+                        onFocus={() => this.handleFocus(name, filter)}
+                        onBlur={() => this.handleBlur(name, filter)}
+                        key={name}
+                    >
+                        <label className='form__label'
+                            htmlFor={name}
+                        >
                             {label}
                             <input
-                                className={this.state[name].isValid ? 'form__input' : 'form__input form__input--invalid'}
+                                className={this.setInputClass(name)}
                                 id={name}
                                 name={name}
                                 type={type}
                                 value={this.state[name].value}
                                 onChange={this.inputChange}
-                                min={type === 'date' ? this.getCurrentDate() : null}
+                                min={this.setDateRange(type)}
+                                autoComplete='off'
                             />
-                            <span className={this.state[name].isValid ? 'form__border' : 'form__border form__border--invalid'}></span>
+                            <span className={this.setBorderClass(name)}></span>
                         </label>
+                        {this.renderSuggestions(name)}
                         <div className='form__placeholder'>
                             {this.renderFormErrMsg(name)}
                         </div>
                     </div>
                 );
             })
+        );
+    };
+
+    setInputClass(inputName) {
+        return this.state[inputName].isValid ? 'form__input' : 'form__input form__input--invalid';
+    };
+
+    setBorderClass(inputName) {
+        return this.state[inputName].isValid ? 'form__border' : 'form__border form__border--invalid';
+    };
+
+    setDateRange(type) {
+        return type === 'date' ? this.getCurrentDate() : null;
+    };
+
+    handleFocus = (inputName, filter) => {
+        const newStateData = {
+            showSuggestions: true,
+        };
+        return filter ? this.updateInputState(inputName, newStateData) : null;
+    };
+
+    handleBlur = (inputName, filter) => {
+        if (filter) {
+            setTimeout(() => {
+                this.updateInputState(inputName, { showSuggestions: false });
+            }, 200);
+        };
+        return null;
+    };
+
+    renderSuggestions(name) {
+        return this.isSuggestion(name) ? this.renderSuggestionsList(name) : null;
+    };
+
+    isSuggestion(inputName) {
+        const { showSuggestions, dataSuggestions, value } = this.state[inputName];
+        return (showSuggestions && !this.isArrayEmpty(dataSuggestions) && value.length > 1);
+    };
+
+    renderSuggestionsList(inputName) {
+        const suggestionContentList = this.getSuggestionContentList(inputName);
+        const suggestionsItemList = this.renderSuggestionItem(suggestionContentList, inputName);
+        return (
+            <ul className='form__prompts'>
+                {suggestionsItemList}
+            </ul>
+        );
+    };
+
+    getSuggestionContentList(inputName) {
+        return this.state[inputName].dataSuggestions.map(suggestion => suggestion[inputName]);
+    };
+
+    completeField = (e, inputName) => {
+        const value = e.target.innerText;
+        const newStateData = {
+            value,
+            dataSuggestions: [],
+        };
+        this.updateInputState(inputName, newStateData);
+    };
+
+    renderSuggestionItem(suggestionContentList, inputName) {
+        return suggestionContentList.map((suggestionItem, index) =>
+            <li className='form__suggestion'
+                onClick={e => this.completeField(e, inputName)}
+                key={index}
+            >
+                {suggestionItem}
+            </li>
         );
     };
 
@@ -74,43 +156,63 @@ export default class CalendarForm extends React.Component {
         const fieldsStateDataArr = this.createStateData();
         fieldsStateDataArr.push({ errors: {} });
         return this.convertArrToObj(fieldsStateDataArr);
-    }
+    };
 
     createStateData() {
         return this.props.fields.map(input => {
-            const { name } = input;
-            return {
+            const { name, filter } = input;
+            const stateData = {
                 [name]: {
                     value: '',
-                    isValid: true,
+                    isValid: true
                 }
             };
+            return filter ? this.createStateDataWithSuggestions(stateData, name) : stateData;
         });
+    };
+
+    createStateDataWithSuggestions(stateData, inputName) {
+        return {
+            [inputName]: {
+                ...stateData[inputName],
+                showSuggestions: false,
+                dataSuggestions: []
+            }
+        };
     };
 
     submitHandler = e => {
         e.preventDefault();
         const errors = this.checkDataCorrectness();
-        if (this.isObjectEmpty(errors)) {
-            const { addMeeting } = this.props;
-            const inputValuesList = this.getInputValues();
-            const meetingData = this.convertArrToObj(inputValuesList);
-            addMeeting(meetingData);
-            const stateObject = this.createStateObject();
-            this.setState(stateObject);
-        } else {
-            this.setState({
-                errors: errors
-            });
-        };
+        return this.isObjectEmpty(errors) ? this.addNewMeeting() : this.showErrors(errors);
     };
 
     inputChange = e => {
+        e.preventDefault();
         const { name, value } = e.target;
         const newStateData = {
-            value: value,
+            value
         }
-        this.updateInputState(name, newStateData);
+        this.setState(prevState => ({
+            [name]: { ...prevState[name], ...newStateData },
+        }), () => this.findSuggestions(name));
+    };
+
+    findSuggestions(inputName) {
+        return (this.state[inputName].showSuggestions && this.state[inputName].value.length > 1) ?
+            this.filterData(inputName) : null;
+    };
+
+    filterData(inputName) {
+        this.api.loadFilteredData(inputName, this.state[inputName].value)
+            .then(data => this.updateSuggestionsState(data, inputName))
+    };
+
+    updateSuggestionsState(dataSuggestions, inputName) {
+        const newStateData = {
+            dataSuggestions
+        };
+        this.updateInputState(inputName, newStateData);
     };
 
     checkDataCorrectness() {
@@ -138,7 +240,21 @@ export default class CalendarForm extends React.Component {
                     }
                     this.updateInputState(inputName, newStateData);
                 }
-            }
+            };
+        });
+    };
+
+    addNewMeeting() {
+        const inputValuesList = this.getInputValues();
+        const meetingData = this.convertArrToObj(inputValuesList);
+        this.props.addMeeting(meetingData);
+        const stateObject = this.createStateObject();
+        this.setState(stateObject);
+    };
+
+    showErrors(errors) {
+        this.setState({
+            errors: errors
         });
     };
 
@@ -166,6 +282,10 @@ export default class CalendarForm extends React.Component {
 
     isObjectEmpty(obj) {
         return Object.keys(obj).length === 0;
+    };
+
+    isArrayEmpty(arr) {
+        return arr.length === 0;
     };
 
     getCurrentDate() {
