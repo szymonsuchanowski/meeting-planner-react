@@ -26,8 +26,8 @@ export default class DataValidator {
 
     checkDataErrors(inputName, inputValue) {
         const isDataValid = this.isMatchRegex(inputName, inputValue.trim());
-        const isDateValid = inputName === 'date' ? this.isFutureDate(inputValue) : true;
-        return (!isDataValid || !isDateValid) ? this.createErrObject(inputName) : null;
+        const isDateCorrect = inputName === 'date' ? this.isFutureDate(inputValue) : true;
+        return (!isDataValid || !isDateCorrect) ? this.createErrObject(inputName) : null;
     };
 
     isMatchRegex(inputName, inputValue) {
