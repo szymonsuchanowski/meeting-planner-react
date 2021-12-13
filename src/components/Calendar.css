@@ -1,0 +1,22 @@
+.calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.calendar__header {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.calendar__title {
+    font-size: 2rem;
+    margin: 0 0 0.1rem;
+}
+
+.calendar__wrapper {
+    width: 100%;
+}
