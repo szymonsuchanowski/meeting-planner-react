@@ -3,6 +3,7 @@ import CalendarAPI from '../helpers/CalendarAPI';
 import CalendarForm from './CalendarForm';
 import CalendarList from './CalendarList';
 import { formFields as fields } from '../helpers/formFields';
+import './Calendar.css';
 
 export default class Calendar extends React.Component {
     constructor() {

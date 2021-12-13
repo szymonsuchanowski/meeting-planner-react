@@ -1,4 +1,5 @@
 import React from 'react';
+import './CalendarItem.css';
 
 export default class CalendarItem extends React.Component {
     render() {

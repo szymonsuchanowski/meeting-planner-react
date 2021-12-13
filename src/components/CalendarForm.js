@@ -1,6 +1,7 @@
 import React from 'react';
 import DataValidator from '../helpers/DataValidator';
 import CalendarAPI from '../helpers/CalendarAPI';
+import './CalendarForm.css';
 
 export default class CalendarForm extends React.Component {
     state = this.createStateObject();
@@ -10,7 +11,7 @@ export default class CalendarForm extends React.Component {
         return (
             <section className='calendar__section calendar__section--form'>
                 <header className='calendar__subheader'>
-                    <h2 className='calendar__subtitle'>schedule a meeting...</h2>
+                    <h2 className='calendar__subtitle'>schedule a meeting</h2>
                     <p className='calendar__description'>time is money</p>
                 </header>
                 <div className='calendar__container'>

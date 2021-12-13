@@ -1,12 +1,13 @@
 import React from 'react';
 import CalendarItem from './CalendarItem';
+import './CalendarList.css';
 
 export default class CalendarList extends React.Component {
     render() {
         return (
             <section className='calendar__section calendar__section--list'>
                 <header className='calendar__subheader'>
-                    <h2 className='calendar__subtitle'>...and execute</h2>
+                    <h2 className='calendar__subtitle'>and execute</h2>
                     <p className='calendar__description'>the time is ripe</p>
                 </header>
                 <div className='calendar__container'>
