@@ -1,0 +1,57 @@
+.calendar__section--form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+}
+
+.calendar__subheader {
+    margin-bottom: 0.5rem;
+}
+
+.calendar__subtitle {
+    margin-bottom: 0.25rem;
+}
+
+.calendar__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__field:focus-within .form__label {
+    letter-spacing: 0.15em;
+}
+
+.form__label {
+    transition: letter-spacing 0.25s linear;
+}
+
+.form__input {
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+.form__border {
+    background: black;
+    display: block;
+    height: 2px;
+    transition: width 0.25s linear;
+    width: 0;
+}
+
+.form__input:focus + .form__border {
+    width: 100%;
+}
+
+.form__placeholder {
+    align-items: center;
+    display: flex;
+    min-height: 2rem;
+}
+
+.form__submit {
+    text-transform: lowercase;
+    padding: 0.5rem 0;
+    cursor: pointer;
+    border-radius: 8px;
+    letter-spacing: 0.15em;
+}

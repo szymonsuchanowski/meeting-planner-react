@@ -21,3 +21,9 @@ a {
 button {
     cursor: pointer;
 }
+
+input {
+    width: 100%;
+    outline: none;
+    border: none;
+}

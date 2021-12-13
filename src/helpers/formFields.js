@@ -19,13 +19,13 @@ export const formFields = [
     },
     {
         name: 'date',
-        label: 'when?',
+        label: 'date',
         type: 'date',
         filter: false
     },
     {
         name: 'time',
-        label: 'what time?',
+        label: 'time',
         type: 'time',
         filter: false
     }

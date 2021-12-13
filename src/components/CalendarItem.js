@@ -28,14 +28,14 @@ export default class CalendarItem extends React.Component {
         const { date, time, id } = this.props.data;
         return (
             <footer className='list__footer'>
-                <div className='footer__description'>
-                    <p className='footer__paragraph'>{this.changeDateFormat(date)}</p>
-                    <p className='footer__paragraph'>{time}</p>
+                <div className='list__container'>
+                    <p className='list__para list__para--date'>{this.changeDateFormat(date)}</p>
+                    <p className='list__para list__para--time'>{time}</p>
                 </div>
-                <button className='footer__btn'
+                <button className='list__btn'
                     title='remove meeting'
                     onClick={() => this.removeTask(id)}>
-                    delete
+                    remove
                 </button>
             </footer>
         );
