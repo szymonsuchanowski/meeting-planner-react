@@ -7,6 +7,22 @@
       "date": "2021-12-15",
       "time": "12:30",
       "id": 1
+    },
+    {
+      "name": "Szymon",
+      "lastName": "Suchanowski",
+      "email": "suchyy3006@gmail.com",
+      "date": "2021-12-24",
+      "time": "16:00",
+      "id": 2
+    },
+    {
+      "name": "Tomasz",
+      "lastName": "Tomaszowski",
+      "email": "tomasz@tomaszowski.com",
+      "date": "2022-01-05",
+      "time": "19:43",
+      "id": 3
     }
   ]
 }

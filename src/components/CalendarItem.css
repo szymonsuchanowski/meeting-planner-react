@@ -1,0 +1,128 @@
+.list__item {
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 8px;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 90px minmax(0, 1fr);
+    padding: 0.75rem;
+    width: 100%;
+}
+
+.list__card {
+    box-shadow: 0 0 3px #ccc;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.list__card::before,
+.list__card::after {
+    box-shadow: 0 3px 3px -3px #ccc;
+    display: block;
+    height: 100%;
+    position: absolute;
+    content: "";
+}
+
+.list__card::before {
+    left: 5%;
+    top: 6px;
+    width: 90%;
+}
+
+.list__card::after {
+    left: 2%;
+    top: 3px;
+    width: 96%;
+}
+
+.list__window {
+    background: red;
+    display: block;
+    height: 20px;
+    position: relative;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.list__window::before,
+.list__window::after {
+    content: "";
+    display: block;
+    width: 3px;
+    height: 10px;
+    position: absolute;
+    background: black;
+    top: -5px;
+}
+
+.list__window::before {
+    left: 15%;
+}
+
+.list__window::after {
+    right: 15%;
+}
+
+.list__date {
+    padding: 0.5rem 0 1rem;
+}
+
+.list__day {
+    font-size: 1.8rem;
+}
+
+.list__time {
+    padding-bottom: 0.5rem;
+    position: relative;
+    padding-left: 15px;
+}
+
+.list__time::before,
+.list__time::after {
+    content: "";
+    position: absolute;
+}
+
+.list__time::before {
+    display: block;
+    height: 1px;
+    width: 60%;
+    background: black;
+    top: -0.5rem;
+    left: 20%;
+}
+
+.list__time::after {
+    background-image: url(../icon/clock.png);
+    width: 12px;
+    height: 12px;
+    background-size: cover;
+    left: 20px;
+    top: 3px;
+}
+
+.list__wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.list__person {
+    overflow-wrap: break-word;
+}
+
+.list__surname {
+    margin-bottom: 1rem;
+}
+
+.list__btn {
+    align-self: flex-end;
+    border-radius: 8px;
+    width: 60%;
+    text-transform: lowercase;
+    padding: 0.25rem;
+    letter-spacing: 0.15em;
+}

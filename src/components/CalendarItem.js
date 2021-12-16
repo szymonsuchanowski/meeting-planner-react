@@ -5,39 +5,42 @@ export default class CalendarItem extends React.Component {
     render() {
         return (
             <li className='list__item'>
-                {this.renderHeaderItem()}
-                {this.renderFooterItem()}
+                {this.renderItemCard()}
+                {this.renderItemPersonInfo()}
             </li>
         );
     };
 
-    renderHeaderItem() {
-        const { name, lastName, email } = this.props.data;
+    renderItemCard() {
+        const { date, time } = this.props.data;
+        const [day, month, year] = this.getDataInfo(date);
         return (
-            <header className='list__header'>
-                <h3 className='list__title'>{name} {lastName}</h3>
-                <a className='list__email'
-                    href={`mailto:${email}`}>
-                    {email}
-                </a>
-            </header>
+            <div className='list__card'>
+                <span className='list__window'></span>
+                <div className='list__date'>
+                    <p className='list__day'>{+day}</p>
+                    <p className='list__month'>{month}, {year}</p>
+                </div>
+                <p className='list__time'>{time}</p>
+            </div>
         );
     };
 
-    renderFooterItem() {
-        const { date, time, id } = this.props.data;
+    renderItemPersonInfo() {
+        const { name, lastName, email, id } = this.props.data;
         return (
-            <footer className='list__footer'>
-                <div className='list__container'>
-                    <p className='list__para list__para--date'>{this.changeDateFormat(date)}</p>
-                    <p className='list__para list__para--time'>{time}</p>
+            <div className='list__wrapper'>
+                <div className='list__person'>
+                    <p className='list__name'>{name}</p>
+                    <p className='list__surname'>{lastName}</p>
+                    <p className='list__email'>{email}</p>
                 </div>
                 <button className='list__btn'
                     title='remove meeting'
                     onClick={() => this.removeTask(id)}>
                     remove
                 </button>
-            </footer>
+            </div>
         );
     };
 
@@ -46,7 +49,7 @@ export default class CalendarItem extends React.Component {
         removeMeeting(id);
     };
 
-    changeDateFormat(date) {
-        return date.split('-').reverse().join('.');
+    getDataInfo(date) {
+        return date.split('-').reverse();
     };
 }

@@ -29,7 +29,7 @@ export default class CalendarList extends React.Component {
     renderInfoMsg() {
         return (
             <p className='calendar__msg'>
-                No scheduled meetings. Do not hesitate - add first meeting and start doing!
+                No scheduled meetings.
             </p>
         );
     };
