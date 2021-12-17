@@ -22,7 +22,9 @@ export default class Calendar extends React.Component {
                 <header className='calendar__header'>
                     <p className='calendar__pretitle'>welcome to</p>
                     <h1 className='calendar__title'>meeting planner</h1>
-                    <p className='calendar__description'>never be late</p>
+                    <p className='calendar__description'>
+                        never be <span className='calendar__highlight'>late</span>
+                    </p>
                 </header>
                 <article className='calendar__wrapper'>
                     <CalendarForm

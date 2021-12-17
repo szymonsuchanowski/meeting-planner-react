@@ -1,29 +1,32 @@
 .list__item {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    background: var(--white-basic);
     border-radius: 8px;
+    box-shadow: var(--box-shadow-basic);
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: 90px minmax(0, 1fr);
-    padding: 0.75rem;
-    width: 100%;
+    grid-template-columns: 100px minmax(0, 1fr);
+    margin: 0 5%;
+    padding: 1rem 0.75rem;
 }
 
 .list__card {
-    box-shadow: 0 0 3px #ccc;
+    background: var(--white-basic);
+    border-radius: 8px;
+    box-shadow: 0 0 3px var(--grey-card-shadow);
     display: flex;
     flex-direction: column;
+    font-family: "Roboto", sans-serif;
     position: relative;
     text-align: center;
-    border-radius: 8px;
 }
 
 .list__card::before,
 .list__card::after {
-    box-shadow: 0 3px 3px -3px #ccc;
+    box-shadow: 0 3px 3px -3px var(--grey-card-shadow);
+    content: "";
     display: block;
     height: 100%;
     position: absolute;
-    content: "";
 }
 
 .list__card::before {
@@ -39,23 +42,23 @@
 }
 
 .list__window {
-    background: red;
+    background: var(--red-dark);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
     display: block;
     height: 20px;
     position: relative;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
 }
 
 .list__window::before,
 .list__window::after {
+    background: var(--black-basic);
     content: "";
     display: block;
-    width: 3px;
     height: 10px;
     position: absolute;
-    background: black;
     top: -5px;
+    width: 3px;
 }
 
 .list__window::before {
@@ -72,12 +75,19 @@
 
 .list__day {
     font-size: 1.8rem;
+    font-weight: 100;
+    letter-spacing: 0.15rem;
+}
+
+.list__month {
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
 }
 
 .list__time {
     padding-bottom: 0.5rem;
-    position: relative;
     padding-left: 15px;
+    position: relative;
 }
 
 .list__time::before,
@@ -87,21 +97,21 @@
 }
 
 .list__time::before {
+    background: var(--black-basic);
     display: block;
     height: 1px;
-    width: 60%;
-    background: black;
-    top: -0.5rem;
     left: 20%;
+    top: -0.5rem;
+    width: 60%;
 }
 
 .list__time::after {
     background-image: url(../icon/clock.png);
-    width: 12px;
-    height: 12px;
     background-size: cover;
+    height: 12px;
     left: 20px;
-    top: 3px;
+    top: 2px;
+    width: 12px;
 }
 
 .list__wrapper {
@@ -114,15 +124,31 @@
     overflow-wrap: break-word;
 }
 
+.list__name {
+    font-size: 0.9rem;
+    letter-spacing: 0.1rem;
+}
+
 .list__surname {
-    margin-bottom: 1rem;
+    font-weight: 700;
+    margin: 0.2rem 0 0.5rem;
+    text-transform: uppercase;
+}
+
+.list__email {
+    font-size: 0.8rem;
 }
 
 .list__btn {
     align-self: flex-end;
+    background: var(--yellow);
     border-radius: 8px;
-    width: 60%;
-    text-transform: lowercase;
+    box-shadow: var(--box-shadow-btn-mobile);
+    color: var(--black-basic);
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    max-width: 120px;
     padding: 0.25rem;
-    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    width: 60%;
 }

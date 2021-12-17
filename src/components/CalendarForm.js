@@ -11,8 +11,7 @@ export default class CalendarForm extends React.Component {
         return (
             <section className='calendar__section calendar__section--form'>
                 <header className='calendar__subheader'>
-                    <h2 className='calendar__subtitle'>schedule a meeting</h2>
-                    <p className='calendar__description'>time is money</p>
+                    <h2 className='calendar__subtitle'>new meeting</h2>
                 </header>
                 <div className='calendar__container'>
                     <form
@@ -215,6 +214,7 @@ export default class CalendarForm extends React.Component {
         const suggestionsItemList = this.renderSuggestionItem(suggestionContentList, inputName);
         return (
             <ul className='form__prompts'>
+                <li className='form__suggestion form__suggestion--desc'>API suggestions</li>
                 {suggestionsItemList}
             </ul>
         );

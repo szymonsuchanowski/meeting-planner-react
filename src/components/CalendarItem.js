@@ -19,7 +19,7 @@ export default class CalendarItem extends React.Component {
                 <span className='list__window'></span>
                 <div className='list__date'>
                     <p className='list__day'>{+day}</p>
-                    <p className='list__month'>{month}, {year}</p>
+                    <p className='list__month'>{month} {year}</p>
                 </div>
                 <p className='list__time'>{time}</p>
             </div>
@@ -33,7 +33,10 @@ export default class CalendarItem extends React.Component {
                 <div className='list__person'>
                     <p className='list__name'>{name}</p>
                     <p className='list__surname'>{lastName}</p>
-                    <p className='list__email'>{email}</p>
+                    <a className='list__email'
+                        href={`mailto:${email}`}>
+                        {email}
+                    </a>
                 </div>
                 <button className='list__btn'
                     title='remove meeting'
@@ -50,6 +53,10 @@ export default class CalendarItem extends React.Component {
     };
 
     getDataInfo(date) {
-        return date.split('-').reverse();
+        const newDate = new Date(date);
+        const monthName = newDate.toLocaleString('en-us', { month: 'short' }).toUpperCase();
+        const dateDataArr = date.split('-').reverse();
+        dateDataArr[1] = monthName;
+        return dateDataArr;
     };
 }

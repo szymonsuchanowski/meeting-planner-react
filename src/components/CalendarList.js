@@ -6,9 +6,8 @@ export default class CalendarList extends React.Component {
     render() {
         return (
             <section className='calendar__section calendar__section--list'>
-                <header className='calendar__subheader'>
-                    <h2 className='calendar__subtitle'>and execute</h2>
-                    <p className='calendar__description'>the time is ripe</p>
+                <header className='calendar__subheader calendar__subheader--list'>
+                    <h2 className='calendar__subtitle'>meeting list</h2>
                 </header>
                 <div className='calendar__container'>
                     {this.renderSectionContent()}
@@ -29,7 +28,7 @@ export default class CalendarList extends React.Component {
     renderInfoMsg() {
         return (
             <p className='calendar__msg'>
-                No scheduled meetings.
+                meeting list empty
             </p>
         );
     };

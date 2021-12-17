@@ -1,20 +1,36 @@
 .calendar {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: 2rem 0;
-    width: 90%;
-    margin: 0 auto;
 }
 
 .calendar__header {
-    width: 100%;
-    margin-bottom: 1.5rem;
+    margin: 2rem auto;
+    width: 90%;
+}
+
+.calendar__pretitle {
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 0.1rem;
 }
 
 .calendar__title {
-    font-size: 2rem;
-    margin: 0 0 0.1rem;
+    font-size: 2.4rem;
+    letter-spacing: 0.25rem;
+    margin: 0;
+}
+
+.calendar__description {
+    font-size: 1.4rem;
+    letter-spacing: 0.15rem;
+    margin-top: 1rem;
+}
+
+.calendar__highlight {
+    filter: blur(1.5px);
+    font-weight: 700;
+    letter-spacing: 0.3rem;
 }
 
 .calendar__wrapper {

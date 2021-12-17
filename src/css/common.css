@@ -19,13 +19,18 @@ a {
 }
 
 button {
-    cursor: pointer;
     border: none;
-    outline: none;
+    cursor: pointer;
+    outline: 1px solid transparent;
 }
 
 input {
-    width: 100%;
-    outline: none;
     border: none;
+    outline: 1px solid transparent;
+    width: 100%;
+}
+
+body {
+    background: var(--yellow);
+    font-family: "Montserrat", sans-serif;
 }
