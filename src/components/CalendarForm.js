@@ -221,7 +221,8 @@ export default class CalendarForm extends React.Component {
     };
 
     getSuggestionContentList(inputName) {
-        return this.state[inputName].dataSuggestions.map(suggestion => suggestion[inputName]);
+        const suggestionsList = this.state[inputName].dataSuggestions.map(suggestion => suggestion[inputName]);
+        return [...new Set(suggestionsList)];
     };
 
     renderSuggestionItem(suggestionContentList, inputName) {

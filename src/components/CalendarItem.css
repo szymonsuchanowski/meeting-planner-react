@@ -131,8 +131,8 @@
 
 .list__surname {
     font-weight: 700;
+    letter-spacing: 0.1rem;
     margin: 0.2rem 0 0.5rem;
-    text-transform: uppercase;
 }
 
 .list__email {
@@ -151,4 +151,33 @@
     padding: 0.25rem;
     text-transform: lowercase;
     width: 60%;
+}
+
+@media only screen and (min-width: 768px) {
+    .list__item {
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .list__surname {
+        font-size: 1.2rem;
+    }
+
+    .list__email {
+        font-size: 0.9rem;
+    }
+
+    .list__btn {
+        background: var(--white-basic);
+        border: 2px solid var(--black-basic);
+        box-shadow: none;
+        padding: 0.4rem;
+        transition: box-shadow var(--transition-data), border var(--transition-data);
+    }
+
+    .list__btn:hover {
+        border-color: var(--yellow);
+        box-shadow: inset 7.5rem 0 0 0 var(--yellow);
+    }
 }

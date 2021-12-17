@@ -19,7 +19,7 @@
     font-size: 1.6rem;
 }
 
-.calendar__form {
+.form {
     display: flex;
     flex-direction: column;
 }
@@ -43,7 +43,6 @@
     letter-spacing: 0.1rem;
     padding: 6px 0;
     transition: border-bottom var(--transition-data);
-    width: 100%;
 }
 
 .form__input--invalid {
@@ -136,5 +135,78 @@
     100% {
         opacity: 1;
         transform: scaleY(1);
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .calendar__section--form {
+        margin: 0 auto;
+        max-width: 1440px;
+        width: 90%;
+    }
+
+    .calendar__subtitle {
+        font-size: 1.8rem;
+    }
+
+    .form {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .form__placeholder {
+        justify-content: flex-start;
+        min-height: 2.2rem;
+    }
+
+    .form__suggestion {
+        font-size: 0.9rem;
+        position: relative;
+        max-width: max-content;
+    }
+
+    .form__suggestion::after {
+        background: var(--black-basic);
+        border-radius: 2px;
+        bottom: 5px;
+        content: "";
+        height: 2px;
+        left: 50%;
+        position: absolute;
+        transition: left var(--transition-data), width var(--transition-data);
+        width: 0;
+    }
+
+    .form__suggestion:hover::after {
+        left: 0;
+        width: 100%;
+    }
+
+    .form__suggestion--desc {
+        font-size: 0.7rem;
+        justify-self: end;
+    }
+
+    .form__suggestion--desc::after {
+        content: none;
+    }
+
+    .form__err {
+        font-size: 0.9rem;
+    }
+
+    .form__submit {
+        background: var(--white-basic);
+        border: 2px solid var(--black-basic);
+        box-shadow: none;
+        margin: 0;
+        padding: 0.85rem;
+        transition: border var(--transition-data), box-shadow var(--transition-data);
+    }
+
+    .form__submit:hover {
+        border: none;
+        box-shadow: var(--box-shadow-basic), inset 25rem 0 0 0 var(--yellow);
     }
 }

@@ -1,6 +1,5 @@
 import ReactDOM from 'react-dom';
 import Calendar from './components/Calendar';
-import './App.css';
 
 function App() {
   return (
