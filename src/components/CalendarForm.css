@@ -198,11 +198,10 @@
 
     .form__submit {
         background: var(--white-basic);
-        border: 2px solid var(--black-basic);
-        box-shadow: none;
+        box-shadow: var(--box-shadow-basic);
         margin: 0;
         padding: 0.85rem;
-        transition: border var(--transition-data), box-shadow var(--transition-data);
+        transition: box-shadow var(--transition-data);
     }
 
     .form__submit:hover {

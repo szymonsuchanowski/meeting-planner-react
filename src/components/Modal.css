@@ -1,0 +1,128 @@
+.modal {
+    align-items: center;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background: var(--black-modal-layer);
+    bottom: 0;
+    display: flex;
+    left: 0;
+    padding: 0 1rem;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.modal__content {
+    align-items: center;
+    background: var(--yellow);
+    border-radius: 12px;
+    box-shadow: var(--box-shadow-basic);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+    width: 100%;
+}
+
+.modal__btn {
+    background: transparent;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    position: absolute;
+    right: 0.5rem;
+    top: 0;
+}
+
+.modal__paragraph {
+    letter-spacing: 0.1rem;
+    line-height: 1.5;
+    margin: 1.5rem 0 2.5rem;
+    text-align: center;
+}
+
+.modal__highlight {
+    font-weight: 700;
+}
+
+.modal__actions {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+    width: 100%;
+}
+
+.modal__confirm,
+.modal__cancel {
+    box-shadow: var(--box-shadow-basic);
+    color: var(--white-basic);
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    padding: 0.5rem 0.75rem;
+    width: 45%;
+}
+
+.modal__confirm {
+    background: var(--green-basic);
+    border-top-left-radius: 40px;
+}
+
+.modal__cancel {
+    background: var(--red-dark);
+    border-bottom-right-radius: 40px;
+}
+
+@media only screen and (min-width: 480px) {
+    .modal {
+        justify-content: center;
+    }
+
+    .modal__content {
+        width: 85%;
+    }
+}
+
+@media only screen and (min-width: 640px) {
+    .modal__content {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    .modal__content {
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 960px) {
+    .modal__confirm,
+    .modal__cancel {
+        background: var(--white-basic);
+        transition: color var(--transition-data), box-shadow var(--transition-data);
+    }
+
+    .modal__confirm {
+        color: var(--green-basic);
+    }
+
+    .modal__confirm:hover {
+        box-shadow: var(--box-shadow-basic), inset 9rem 0 0 0 var(--green-basic);
+        color: var(--white-basic);
+    }
+
+    .modal__cancel {
+        color: var(--red-dark);
+    }
+
+    .modal__cancel:hover {
+        box-shadow: var(--box-shadow-basic), inset 9rem 0 0 0 var(--red-dark);
+        color: var(--white-basic);
+    }
+}
+
+@media only screen and (min-width: 1250px) {
+    .modal__content {
+        max-width: 800px;
+    }
+}

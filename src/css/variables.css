@@ -1,8 +1,10 @@
 :root {
     --black-basic: rgba(0, 0, 0, 1);
-    --box-shadow-basic: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-        rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    --black-modal-layer: rgba(0, 0, 0, 0.55);
+    --box-shadow-basic: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+        rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     --box-shadow-btn-mobile: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    --green-basic: rgba(1, 150, 33, 1);
     --grey-card-shadow: rgba(204, 204, 204, 1);
     --red-dark: rgba(252, 47, 40, 1);
     --transition-data: 0.25s linear;
