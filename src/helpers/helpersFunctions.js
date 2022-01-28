@@ -1,7 +1,7 @@
 export const sortMeetingsByTime = (data) => {
     return data.sort((a, b) => {
         if (a.date === b.date) {
-            return b.time - a.time;
+            return a.time < b.time ? -1 : 1;
         }
         return a.date < b.date ? -1 : 1;
     });
