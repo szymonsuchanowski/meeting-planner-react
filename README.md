@@ -1,70 +1,89 @@
-# Getting Started with Create React App
+![Meeting Planner App screenshot](/assets/meeting-planner-mockup.png "Meeting Planner app screenshot")
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+&nbsp;
 
-## Available Scripts
+## 🔍 Overview
 
-In the project directory, you can run:
+### What is Meeting Planner App?
 
-### `npm start`
+Meeting Planner App is kind of **React callendar** with **local API** (JSON Server) as a database to manage meetings. The calendar is rendered from the database and contain a form to submit new meetings (form fields with hints created on previous meetings data saved in local API).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Kanban Board App features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **adding meetings** with the specification of:
+    - name
+    - last name
+    - e-mail
+    - date
+    - time
+    - fields of the form are validated
+- **hints** for form fields based on previous meetings data
+- **deleting tasks**
+- renderd **meetings** are sorted by date
+- **saving / deleting meeting using local API** (JSON Server)
 
-### `npm test`
+&nbsp;
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 👨‍💻 Built with
 
-### `npm run build`
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+&nbsp;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## ⚙️ Run Locally
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The project uses [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/), follow the steps below to run it locally.
 
-### `npm run eject`
+- Clone the project using
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+  git clone
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Go to the project directory and install dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+  npm i
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Run JSON Server
 
-## Learn More
+```bash
+  npm run api
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Start developer mode
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  npm start
+```
 
-### Code Splitting
+- Meeting Planner App is ready to go:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    - site
 
-### Analyzing the Bundle Size
+        ```bash
+        http://localhost:3000
+        ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    - meetings data (database)
 
-### Making a Progressive Web App
+        ```bash
+        http://localhost:3005/meetings
+        ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+&nbsp;
 
-### Advanced Configuration
+## 🔗 Useful resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- [official React website](https://reactjs.org/docs/getting-started.html)
+- [50 Gorgeous Color Schemes From Award-Winning Websites](https://visme-co.translate.goog/blog/website-color-schemes/?_x_tr_sl=en&_x_tr_tl=pl&_x_tr_hl=pl&_x_tr_pto=op,sc) - for design inspiration
 
-### Deployment
+&nbsp;
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 🙏 Special thanks
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Special thanks to my [Mentor - devmentor.pl](https://devmentor.pl/) for providing me with the task and code review.
