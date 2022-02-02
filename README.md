@@ -49,7 +49,7 @@ The project uses [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/
   npm i
 ```
 
-- Run JSON Server
+- Run JSON Server (if you don't have JSON server installed globally then you need to install it using `npm install -g JSON-server` and then run JSON Server)
 
 ```bash
   npm run api
