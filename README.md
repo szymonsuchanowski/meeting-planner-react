@@ -6,7 +6,7 @@
 
 ### What is Meeting Planner App?
 
-Meeting Planner App is kind of **React callendar** with **local API** (JSON Server) as a database to manage meetings. The calendar is rendered from the database and contain a form to submit new meetings (form fields with hints created on previous meetings data saved in local API).
+Meeting Planner App is kind of **React callendar** with **local API** (JSON Server) as a database to manage meetings (using [fake-json-server](https://github.com/szymonsuchanowski/fake-json-server-heroku)). The calendar is rendered from the database and contain a form to submit new meetings (form fields with hints created on previous meetings data saved in local API).
 
 ### Kanban Board App features
 
@@ -49,12 +49,6 @@ The project uses [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/
   npm i
 ```
 
-- Run JSON Server (if you don't have JSON server installed globally then you need to install it using `npm install -g JSON-server` and then run JSON Server)
-
-```bash
-  npm run api
-```
-
 - Start developer mode
 
 ```bash
@@ -72,7 +66,7 @@ The project uses [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/
     - meetings data (database)
 
         ```bash
-        http://localhost:3005/meetings
+        https://fake-server-trip-booking.herokuapp.com/meetings
         ```
 
 &nbsp;
@@ -81,6 +75,15 @@ The project uses [node](https://nodejs.org/en/) and [npm](https://www.npmjs.com/
 
 - [official React website](https://reactjs.org/docs/getting-started.html)
 - [50 Gorgeous Color Schemes From Award-Winning Websites](https://visme-co.translate.goog/blog/website-color-schemes/?_x_tr_sl=en&_x_tr_tl=pl&_x_tr_hl=pl&_x_tr_pto=op,sc) - for design inspiration
+
+&nbsp;
+## 🥷 Author
+
+Coded by **Szymon Suchanowski**.
+
+Feel free to contact me:
+- [LinkedIn](https://www.linkedin.com/in/suchanowski/)
+- [GitHub](https://github.com/szymonsuchanowski)
 
 &nbsp;
 

@@ -1,6 +1,6 @@
 export default class CalendarAPI {
     constructor() {
-        this.url = 'http://localhost:3005/meetings';
+        this.url = "https://fake-server-trip-booking.herokuapp.com/meetings";
     };
 
     loadData() {
