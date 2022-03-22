@@ -4,7 +4,7 @@
 
 ## 🔥 Live
 
-Click to see live demo: [Kanban Board App](https://szymonsuchanowski.github.io/kanban-app/)!
+Click to see live demo: [Meeting Planner App](https://szymonsuchanowski.github.io/kanban-app/)!
 
 &nbsp;
 
@@ -14,7 +14,7 @@ Click to see live demo: [Kanban Board App](https://szymonsuchanowski.github.io/k
 
 Meeting Planner App is kind of **React callendar** with **local API** (JSON Server) as a database to manage meetings (using [fake-json-server](https://github.com/szymonsuchanowski/fake-json-server-heroku)). The calendar is rendered from the database and contain a form to submit new meetings (form fields with hints created on previous meetings data saved in local API).
 
-### Kanban Board App features
+### Meeting Planner App features
 
 - **adding meetings** with the specification of:
     - name
