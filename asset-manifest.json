@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/szymonsuchanowski/planner/static/css/main.230448c2.chunk.css",
+    "main.js": "/szymonsuchanowski/planner/static/js/main.ca55bfb7.chunk.js",
+    "main.js.map": "/szymonsuchanowski/planner/static/js/main.ca55bfb7.chunk.js.map",
+    "runtime-main.js": "/szymonsuchanowski/planner/static/js/runtime-main.bbaab7b7.js",
+    "runtime-main.js.map": "/szymonsuchanowski/planner/static/js/runtime-main.bbaab7b7.js.map",
+    "static/css/2.679831fc.chunk.css": "/szymonsuchanowski/planner/static/css/2.679831fc.chunk.css",
+    "static/js/2.20738def.chunk.js": "/szymonsuchanowski/planner/static/js/2.20738def.chunk.js",
+    "static/js/2.20738def.chunk.js.map": "/szymonsuchanowski/planner/static/js/2.20738def.chunk.js.map",
+    "static/js/3.894c0cce.chunk.js": "/szymonsuchanowski/planner/static/js/3.894c0cce.chunk.js",
+    "static/js/3.894c0cce.chunk.js.map": "/szymonsuchanowski/planner/static/js/3.894c0cce.chunk.js.map",
+    "index.html": "/szymonsuchanowski/planner/index.html",
+    "static/css/2.679831fc.chunk.css.map": "/szymonsuchanowski/planner/static/css/2.679831fc.chunk.css.map",
+    "static/css/main.230448c2.chunk.css.map": "/szymonsuchanowski/planner/static/css/main.230448c2.chunk.css.map",
+    "static/js/2.20738def.chunk.js.LICENSE.txt": "/szymonsuchanowski/planner/static/js/2.20738def.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.bbaab7b7.js",
+    "static/css/2.679831fc.chunk.css",
+    "static/js/2.20738def.chunk.js",
+    "static/css/main.230448c2.chunk.css",
+    "static/js/main.ca55bfb7.chunk.js"
+  ]
+}
