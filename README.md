@@ -4,7 +4,7 @@
 
 ## 🔥 Live
 
-Click to see live demo: [Meeting Planner App](https://szymonsuchanowski.github.io/kanban-app/)!
+Click to see live demo: [Meeting Planner App](https://szymonsuchanowski.github.io/planner/)!
 
 &nbsp;
 
